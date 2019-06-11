@@ -1,0 +1,8 @@
+- {eta: 0.01, opt: adagrad, weight_decay: 0.0005}
+- {eta: 1.0e-05, opt: adam, weight_decay: 0.0005}
+- {eta: 0.0001, opt: amsgrad, weight_decay: 0.0005}
+- {eta: 0.01, opt: bpgrad, weight_decay: 0.0005}
+- {eta: 0.01, opt: dfw, weight_decay: 0.0001}
+- {eta: 0.15, opt: l4adam, weight_decay: 0.0001}
+- {eta: 0.0015, opt: l4mom, weight_decay: 0.0005}
+- {eta: 0.01, max_norm: 50, opt: alig}

@@ -1,0 +1,16 @@
+nltk
+torch
+tensorflow
+mlogger
+git+git://github.com/oval-group/dfw
+git+git://github.com/lberrada/l4-optimizer
+git+git://github.com/lberrada/L4.pytorch.git
+torchvision
+setuptools
+numpy
+visdom
+tqdm
+dm-sonnet
+waitGPU
+PyYAML
+psutil

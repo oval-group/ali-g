@@ -1,0 +1,36 @@
+- {batch_size: 512, dataset: cifar10, eta: 0.001, model: wrn, opt: amsgrad, weight_decay: 0.0001}
+- {batch_size: 512, dataset: cifar10, eta: 1, model: wrn, momentum: 0.9, opt: dfw,
+  weight_decay: 0.0001}
+- {T: 60 120 160, batch_size: 128, dataset: cifar10, decay_factor: 0.2, eta: 0.1,
+  model: wrn, momentum: 0.9, opt: sgd, weight_decay: 0.0005}
+- {batch_size: 128, dataset: cifar10, eta: 0.015, model: wrn, opt: l4adam, weight_decay: 0.0001}
+- {batch_size: 128, dataset: cifar10, eta: 0.15, model: wrn, opt: l4mom, weight_decay: 0.0001}
+- {batch_size: 256, dataset: cifar10, eta: 1, max_norm: 100, model: wrn, momentum: 0.9,
+  opt: alig}
+- {batch_size: 128, dataset: cifar10, eta: 0.001, model: dn, opt: amsgrad, weight_decay: 0.0001}
+- {batch_size: 64, dataset: cifar10, eta: 0.1, model: dn, momentum: 0.9, opt: dfw,
+  weight_decay: 0.0001}
+- {T: 150 225, batch_size: 64, dataset: cifar10, decay_factor: 0.1, eta: 0.1, model: dn,
+  momentum: 0.9, opt: sgd, weight_decay: 0.0001}
+- {batch_size: 256, dataset: cifar10, eta: 0.15, model: dn, opt: l4adam, weight_decay: 0.0001}
+- {batch_size: 64, dataset: cifar10, eta: 0.15, model: dn, opt: l4mom, weight_decay: 0.0001}
+- {batch_size: 64, dataset: cifar10, eta: 0.1, max_norm: 75, model: dn, momentum: 0.9,
+  opt: alig}
+- {batch_size: 128, dataset: cifar100, eta: 0.001, model: wrn, opt: amsgrad, weight_decay: 0.0001}
+- {batch_size: 256, dataset: cifar100, eta: 0.1, model: wrn, momentum: 0.9, opt: dfw,
+  weight_decay: 0.0005}
+- {T: 60 120 160, batch_size: 128, dataset: cifar100, decay_factor: 0.2, eta: 0.1,
+  model: wrn, momentum: 0.9, opt: sgd, weight_decay: 0.0005}
+- {batch_size: 512, dataset: cifar100, eta: 0.015, model: wrn, opt: l4adam, weight_decay: 0.0001}
+- {batch_size: 512, dataset: cifar100, eta: 0.015, model: wrn, opt: l4mom, weight_decay: 0.0005}
+- {batch_size: 128, dataset: cifar100, eta: 0.1, max_norm: 100, model: wrn, momentum: 0.9,
+  opt: alig}
+- {batch_size: 64, dataset: cifar100, eta: 0.001, model: dn, opt: amsgrad, weight_decay: 0.0001}
+- {batch_size: 64, dataset: cifar100, eta: 0.1, model: dn, momentum: 0.9, opt: dfw,
+  weight_decay: 0.0001}
+- {T: 150 225, batch_size: 64, dataset: cifar100, decay_factor: 0.1, eta: 0.1, model: dn,
+  momentum: 0.9, opt: sgd, weight_decay: 0.0001}
+- {batch_size: 256, dataset: cifar100, eta: 0.015, model: dn, opt: l4adam, weight_decay: 0.0001}
+- {batch_size: 256, dataset: cifar100, eta: 0.015, model: dn, opt: l4mom, weight_decay: 0.0001}
+- {batch_size: 256, dataset: cifar100, eta: 0.1, max_norm: 75, model: dn, momentum: 0.9,
+  opt: alig}

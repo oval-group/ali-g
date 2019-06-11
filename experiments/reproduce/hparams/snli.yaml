@@ -1,0 +1,17 @@
+- {eta: 0.01, loss: ce, opt: adagrad}
+- {eta: 0.0001, loss: ce, opt: adam}
+- {eta: 0.0001, loss: ce, opt: amsgrad}
+- {eta: 1, loss: ce, opt: bpgrad}
+- {eta: 1, loss: ce, opt: sgd}
+- {eta: 0.15, loss: ce, opt: l4adam}
+- {eta: 0.015, loss: ce, opt: l4mom}
+- {eta: 1, loss: ce, opt: alig}
+- {eta: 0.01, loss: svm, opt: adagrad}
+- {eta: 0.0001, loss: svm, opt: adam}
+- {eta: 0.0001, loss: svm, opt: amsgrad}
+- {eta: 1, loss: svm, opt: bpgrad}
+- {eta: 1, loss: svm, opt: dfw}
+- {eta: 0.1, loss: svm, opt: sgd}
+- {eta: 0.015, loss: svm, opt: l4adam}
+- {eta: 0.015, loss: svm, opt: l4mom}
+- {eta: 1, loss: svm, opt: alig}

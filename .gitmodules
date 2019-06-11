@@ -1,0 +1,6 @@
+[submodule "experiments/dnc"]
+	path = experiments/dnc
+	url = https://github.com/lberrada/dnc
+[submodule "experiments/InferSent"]
+	path = experiments/InferSent
+	url = https://github.com/lberrada/InferSent
