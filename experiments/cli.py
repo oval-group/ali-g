@@ -114,22 +114,28 @@ def _add_misc_parser(parser):
 
 def set_xp_name(args):
     if args.debug:
-        args.log = args.visdom = False
-        args.xp_name = '../debug'
-        if not os.path.exists(args.xp_name):
-            os.makedirs(args.xp_name)
-    elif args.xp_name is None:
+        args.visdom = False
+        args.batch_size = 3
+        args.test_size = args.val_size = args.train_size = 8
+        args.epochs = 2
+
+    if args.xp_name is None:
         xp_name = '../results/{data}/'.format(data=args.dataset)
         xp_name += "{model}{data}-{opt}--eta-{eta}--l2-{l2}--b-{b}"
         l2 = args.max_norm if args.opt == 'alig' else args.weight_decay
         data = args.dataset.replace("cifar", "")
+        xp_name += "--momentum-{}".format(args.momentum)
         args.xp_name = xp_name.format(model=args.model, data=data, opt=args.opt, eta=args.eta, l2=l2, b=args.batch_size)
+        if args.debug:
+            args.xp_name += "--debug"
 
     if args.log:
         # generate automatic experiment name if not provided
         if os.path.exists(args.xp_name):
-            warnings.warn('An experiment already exists at {}'
-                          .format(os.path.abspath(args.xp_name)))
+            if not args.debug:
+                warnings.warn('An experiment already exists at {}'
+                              .format(os.path.abspath(args.xp_name)))
+                raise RuntimeError
         else:
             os.makedirs(args.xp_name)
 
@@ -143,6 +149,8 @@ def set_num_classes(args):
         args.n_classes = 3
     elif 'svhn' in args.dataset:
         args.n_classes = 10
+    elif args.dataset == 'imagenet':
+        args.n_classes = 1000
     else:
         raise ValueError
 

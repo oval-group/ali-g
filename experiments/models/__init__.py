@@ -1,5 +1,7 @@
 import os
 import torch
+import torchvision.models as th_models
+
 from .densenet import DenseNet3
 from .wide_resnet import WideResNet
 from collections import OrderedDict
@@ -11,6 +13,9 @@ def get_model(args):
                           bottleneck=bool(args.bottleneck), dropRate=args.dropout)
     elif args.model == "wrn":
         model = WideResNet(args.depth, args.n_classes, args.width, dropRate=args.dropout)
+    elif args.dataset == 'imagenet':
+        model = th_models.__dict__[args.model](pretrained=False)
+        model = torch.nn.DataParallel(model)
     else:
         raise NotImplementedError
 

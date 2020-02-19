@@ -1,0 +1,8 @@
+- {model: wrn, dataset: cifar100, batch_size: 128, opt: alig, eta: 1.0}
+- {model: wrn, dataset: cifar100, batch_size: 128, opt: sgd, eta: 0.1}
+- {model: wrn, dataset: cifar100, batch_size: 128, opt: adagrad, eta: 0.1}
+- {model: wrn, dataset: cifar100, batch_size: 128, opt: adam, eta: 0.001}
+- {model: dn, dataset: cifar100, batch_size: 64, opt: sgd, eta: 0.01}
+- {model: dn, dataset: cifar100, batch_size: 64, opt: adagrad, eta: 0.1}
+- {model: dn, dataset: cifar100, batch_size: 64, opt: adam, eta: 0.001}
+- {model: dn, dataset: cifar100, batch_size: 64, opt: alig, eta: 0.1}

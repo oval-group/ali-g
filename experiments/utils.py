@@ -59,6 +59,11 @@ def setup_xp(args, model, optimizer):
     xp.test.acc = mlogger.metric.Average(plotter=plotter, plot_title="Accuracy", plot_legend="test")
     xp.test.timer = mlogger.metric.Timer(plotter=plotter, plot_title="Time", plot_legend='test')
 
+    if args.dataset == "imagenet":
+        xp.train.acc5 = mlogger.metric.Average(plotter=plotter, plot_title="Accuracy@5", plot_legend="training")
+        xp.val.acc5 = mlogger.metric.Average(plotter=plotter, plot_title="Accuracy@5", plot_legend="validation")
+        xp.test.acc5 = mlogger.metric.Average(plotter=plotter, plot_title="Accuracy@5", plot_legend="test")
+
     if args.visdom:
         plotter.set_win_opts("Step-Size", {'ytype': 'log'})
         plotter.set_win_opts("Objective", {'ytype': 'log'})

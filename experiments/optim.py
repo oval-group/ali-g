@@ -3,7 +3,7 @@ import torch.optim
 from dfw import DFW
 from dfw.baselines import BPGrad
 from l4pytorch import L4Mom, L4Adam
-from alig.th import AliG
+from alig.th import AliG, Yogi, AdamW
 from alig.th.projection import l2_projection
 
 
@@ -18,6 +18,10 @@ def get_optimizer(args, parameters):
         optimizer = torch.optim.Adagrad(parameters, lr=args.eta, weight_decay=args.weight_decay)
     elif args.opt == "amsgrad":
         optimizer = torch.optim.Adam(parameters, lr=args.eta, weight_decay=args.weight_decay, amsgrad=True)
+    elif args.opt == "yogi":
+        optimizer = Yogi(parameters, lr=args.eta, weight_decay=args.weight_decay)
+    elif args.opt == "adamw":
+        optimizer = AdamW(parameters, lr=args.eta, weight_decay=args.weight_decay)
     elif args.opt == 'dfw':
         optimizer = DFW(parameters, eta=args.eta, momentum=args.momentum, weight_decay=args.weight_decay)
     elif args.opt == 'bpgrad':

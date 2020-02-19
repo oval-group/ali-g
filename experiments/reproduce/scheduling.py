@@ -6,17 +6,20 @@ except ImportError:
     pass
 import subprocess
 import time
-import psutil
+import os
 
 
 def run_command(command, on_gpu, noprint):
     if not on_gpu:
         while True:
             time.sleep(1)
-            if psutil.getloadavg()[0] < 12:
+            if os.getloadavg()[0] < 4:
                 break
     elif waitGPU is not None:
-        waitGPU.wait(nproc=0, interval=1, ngpu=1, gpu_ids=[0, 1, 2, 3])
+        try:
+            waitGPU.wait(nproc=0, interval=1, ngpu=1, gpu_ids=[0, 1, 2, 3])
+        except:
+            print("Failed to run `waitGPU.wait` --> no automatic scheduling on GPU")
     command = " ".join(command.split())
     if noprint:
         command = "{} > /dev/null".format(command)

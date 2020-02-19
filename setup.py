@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-__version__ = "1.0.a"
+__version__ = "1.1"
 
 setup(name='alig',
       description='Implementation of ALI-G',

@@ -101,8 +101,8 @@ class Test(unittest.TestCase):
             assert np.allclose(w1, w2, atol=atol, rtol=rtol), "Failed check at iteration {}".format(it)
 
     def test_alig_without_momentum(self):
-        optimizer_tf = AliG_tf()
-        optimizer_th = AliG_th(self.model_th.parameters())
+        optimizer_tf = AliG_tf(momentum=0)
+        optimizer_th = AliG_th(self.model_th.parameters(), momentum=0)
 
         self.train_with(optimizer_tf, optimizer_th)
 

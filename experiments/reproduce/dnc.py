@@ -5,15 +5,21 @@ import yaml
 from scheduling import launch
 
 
-def add_gradient_jobs(jobs):
-    optimizers = ('adam', 'adagrad', 'nag', 'sgd', 'alig', 'rmsprop')
-    lr_list = (1e-4, 1e-3, 1e-2, 1e-1, 1e0, 1e1, 1e2, 1e3, 1e4)
-
+def add_adaptive_gradient_jobs(jobs):
+    optimizers = ('adam', 'adagrad', 'nag', 'sgd', 'rmsprop')
+    lr_list = (1e-4, 3e-4, 1e-3, 3e-3, 1e-2, 3e-2,
+               1e-1, 3e-1, 1e0, 3e0, 1e1, 3e1)
     for optimizer in optimizers:
         for lr in lr_list:
             jobs.append('python train.py --optimizer {optimizer} --learning_rate {lr}'
                         .format(optimizer=optimizer, lr=lr))
-    jobs.append("python train.py --optimizer alig")
+
+
+def add_alig_jobs(jobs):
+    lr_list = [1e2, 1e3, 1e4, 1e5, 1e6, 1e7, -1]
+    for lr in lr_list:
+        jobs.append('python train.py --optimizer alig --learning_rate {lr}'
+                    .format(lr=lr))
 
 
 def add_l4_jobs(jobs):
@@ -27,7 +33,8 @@ def add_l4_jobs(jobs):
 
 def create_jobs():
     jobs = []
-    add_gradient_jobs(jobs)
+    add_alig_jobs(jobs)
+    add_adaptive_gradient_jobs(jobs)
     add_l4_jobs(jobs)
     return jobs
 

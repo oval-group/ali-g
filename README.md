@@ -102,6 +102,8 @@ The following command lines assume that the current working directory is `experi
 * To reproduce the SVHN experiments: run `python reproduce/svhn.py`
 * To reproduce the SNLI experiments: follow the [preparation instructions](https://github.com/lberrada/InferSent/tree/ali-g#download-datasets) and run  `python reproduce/snli.py`
 * To reproduce the CIFAR experiments: run `python reproduce/cifar.py`
+* To reproduce the CIFAR experiments on training performance: run `python reproduce/cifar_train.py`
+* To reproduce the ImageNet experiment: run `python reproduce/imagenet.py`
 
 
 ## Acknowledgments
@@ -111,3 +113,4 @@ We use the following third-party implementations:
 * [InferSent](https://github.com/facebookresearch/InferSent).
 * [DenseNets](https://github.com/andreasveit/densenet-pytorch).
 * [Wide ResNets](https://github.com/xternalz/WideResNet-pytorch).
+* [Top-k Truncated Cross-Entropy](https://github.com/locuslab/lml).

@@ -33,9 +33,11 @@ def train(model, loss, optimizer, loader, args, xp):
         # monitoring
         batch_size = x.size(0)
         xp.train.acc.update(accuracy(scores, y), weighting=batch_size)
-        xp.train.loss.update(loss(scores, y), weighting=batch_size)
+        xp.train.loss.update(loss_value, weighting=batch_size)
         xp.train.step_size.update(optimizer.step_size, weighting=batch_size)
         xp.train.step_size_u.update(optimizer.step_size_unclipped, weighting=batch_size)
+        if args.dataset == "imagenet":
+            xp.train.acc5.update(accuracy(scores, y, topk=5), weighting=batch_size)
 
     xp.train.weight_norm.update(torch.sqrt(sum(p.norm() ** 2 for p in model.parameters())))
     xp.train.reg.update(0.5 * args.weight_decay * xp.train.weight_norm.value ** 2)
@@ -75,6 +77,8 @@ def test(model, optimizer, loader, args, xp):
         (x, y) = (x.cuda(), y.cuda()) if args.cuda else (x, y)
         scores = model(x)
         xp_group.acc.update(accuracy(scores, y), weighting=x.size(0))
+        if args.dataset == "imagenet":
+            xp_group.acc5.update(accuracy(scores, y, topk=5), weighting=scores.size(0))
 
     xp_group.timer.update()
 
